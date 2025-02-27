@@ -1,6 +1,5 @@
 using System.Collections;
 using DG.Tweening;
-using DG.Tweening.Core.Easing;
 using TMPro;
 using UnityEngine;
 
