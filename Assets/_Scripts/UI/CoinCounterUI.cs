@@ -7,34 +7,33 @@ public class CoinCounterUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI current;
     [SerializeField] private TextMeshProUGUI toUpdate;
-    [SerializeField] private Transform coinTextsContainer;
-
-    [Header("Tweening Parameters")]
-    [SerializeField] private float moveAmount;
+    [SerializeField] private Transform coinTextContainer;
     [SerializeField] private float duration;
     [SerializeField] private Ease animationCurve;
 
+    private float moveAmount;
     private float containerInitPosition;
 
-    private void Awake()
+    private void Start()
     {
         current.SetText("0");
         toUpdate.SetText("0");
-        containerInitPosition = coinTextsContainer.localPosition.y;
+        containerInitPosition = coinTextContainer.localPosition.y;
+        moveAmount = current.rectTransform.rect.height;
     }
 
     public void UpdateScore(int score)
     {
         toUpdate.SetText($"{score}");
-        coinTextsContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration).SetEase(animationCurve);
-        StartCoroutine(SetCoinContainer(score));
+        coinTextContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration).SetEase(animationCurve);
+        StartCoroutine(ResetCoinContainer(score));
     }
 
-    private IEnumerator SetCoinContainer(int score)
+    private IEnumerator ResetCoinContainer(int score)
     {
         yield return new WaitForSeconds(duration);
         current.SetText($"{score}");
-        Vector3 localPosition = coinTextsContainer.localPosition;
-        coinTextsContainer.localPosition = new Vector3(localPosition.x, containerInitPosition, localPosition.z);
+        Vector3 localPosition = coinTextContainer.localPosition;
+        coinTextContainer.localPosition = new Vector3(localPosition.x, containerInitPosition, localPosition.z);
     }
 }
