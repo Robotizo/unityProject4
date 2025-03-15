@@ -1,12 +1,12 @@
-# Third Person Platformer with UI
+# Third Person Platformer with UI 🎮
 
 A simple third person character controller in Unity with a basic user interface
 
 ## Demo
 
+[Watch the demo video on YouTube](https://youtu.be/BjEbOzxaIcQ)
 
-https://github.com/user-attachments/assets/97ed7089-92be-413b-8c81-354ac0745784
-
+WORKING VERSION
 
 ## Cloning & Setting Up the Project
 
